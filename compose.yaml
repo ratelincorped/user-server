@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: marketingdb
+    environment:
+      POSTGRES_DB: ratel-user
+      POSTGRES_PASSWORD: ratelpswd
+      POSTGRES_USER: ratel_user
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgres
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - '5051:8080'
+
+volumes:
+  pgdata:
